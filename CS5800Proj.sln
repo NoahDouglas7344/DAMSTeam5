@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.808.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS5800Proj", "CS5800Proj\CS5800Proj.csproj", "{1E1889D0-B658-4688-8880-BBBBC1B503CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS5800Proj.Testing", "CS5800Proj.Testing\CS5800Proj.Testing.csproj", "{AD223078-7FCD-4055-BEA7-83D60D711B5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1E1889D0-B658-4688-8880-BBBBC1B503CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E1889D0-B658-4688-8880-BBBBC1B503CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E1889D0-B658-4688-8880-BBBBC1B503CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD223078-7FCD-4055-BEA7-83D60D711B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD223078-7FCD-4055-BEA7-83D60D711B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD223078-7FCD-4055-BEA7-83D60D711B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD223078-7FCD-4055-BEA7-83D60D711B5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
