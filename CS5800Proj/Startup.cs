@@ -28,7 +28,10 @@ namespace CS5800Proj
         {
             services.AddRazorPages();
             services.AddTransient<MySqlDatabase>(_ => new MySqlDatabase(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddMvc().AddRazorPagesOptions(options =>
+           {
+               options.Conventions.AddPageRoute("/LogIn", "");
+           });
    
         }
 

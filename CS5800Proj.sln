@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS5800Proj", "CS5800Proj\CS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS5800Proj.Testing", "CS5800Proj.Testing\CS5800Proj.Testing.csproj", "{AD223078-7FCD-4055-BEA7-83D60D711B5E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6903593C-A697-4CDD-AD54-4E1DE4C1A5B1}"
+	ProjectSection(SolutionItems) = preProject
+		_ViewImports.cshtml = _ViewImports.cshtml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
