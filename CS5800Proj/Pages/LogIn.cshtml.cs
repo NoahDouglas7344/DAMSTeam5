@@ -18,9 +18,13 @@ namespace CS5800Proj.Pages
         {
          
         }
-        public void OnPost()
+        public IActionResult OnPost()
         {
-             
+            if(ModelState.IsValid == false)
+            {
+                return Page();
+            }
+            return RedirectToPage("./Home");
         }
     }
 }
