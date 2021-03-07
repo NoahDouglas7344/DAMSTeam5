@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.808.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS5800Proj", "CS5800Proj\CS5800Proj.csproj", "{1E1889D0-B658-4688-8880-BBBBC1B503CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS5800Proj", "CS5800Proj\CS5800Proj.csproj", "{1E1889D0-B658-4688-8880-BBBBC1B503CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS5800Proj.Testing", "CS5800Proj.Testing\CS5800Proj.Testing.csproj", "{AD223078-7FCD-4055-BEA7-83D60D711B5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS5800Proj.Testing", "CS5800Proj.Testing\CS5800Proj.Testing.csproj", "{AD223078-7FCD-4055-BEA7-83D60D711B5E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6903593C-A697-4CDD-AD54-4E1DE4C1A5B1}"
 	ProjectSection(SolutionItems) = preProject

@@ -1,0 +1,24 @@
+﻿@page
+@model CS5800Proj.Pages.DonationRequestModel
+@{
+    ViewData["Title"] = "Request a Donation";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Please Select a Disaster That Tou Need Relief From @Model.disaster</h1>
+    <form method="post">
+        <div class="mb-3">
+           <label for="disaster">Select Disaster:</label>
+           <select id="disaster" name="disasters">
+               <option value="one" selected>One</option>
+               <option value="two">Two</option>
+               <option value="three">Three</option>
+               <option value="four">Four</option>
+           </select>
+        </div>
+        <button type="submit" class = "btn btn-outline-warning shadow bg-body rounded" style="max-width:8%">Submit</button>
+    </form>
+</div>
+
