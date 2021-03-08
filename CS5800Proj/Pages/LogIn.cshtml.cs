@@ -24,6 +24,7 @@ namespace CS5800Proj.Pages
             {
                 return Page();
             }
+            string tempVariable = HttpContext.Request.Form["userName"];
             return RedirectToPage("./Home");
         }
     }
