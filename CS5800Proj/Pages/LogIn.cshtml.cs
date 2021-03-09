@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MySql.Data.MySqlClient;
 
 namespace CS5800Proj.Pages
 {
@@ -18,14 +19,38 @@ namespace CS5800Proj.Pages
         {
          
         }
-        public IActionResult OnPost()
+
+        public IActionResult OnPost(object Configuration)
         {
             if(ModelState.IsValid == false)
             {
                 return Page();
             }
-            string tempVariable = HttpContext.Request.Form["userName"];
-            return RedirectToPage("./Home");
+            //string tempVariable = HttpContext.Request.Form["userName"];
+            bool userFound = false;
+            bool passwordMatch = false;
+
+            using var connection = new MySqlConnection("server=localhost;port=3306;database=testDB;user=root;password=CS5800Team5");
+            {
+                connection.Open();
+
+                using var command = new MySqlCommand("SELECT userName, passWord FROM testUser;", connection);
+                using var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var value = reader.GetValue(0);
+                    if(value.ToString() == HttpContext.Request.Form["userName"] && reader.GetValue(1) == HttpContext.Request.Form["passWord"])
+                    {
+                        userFound = true;
+                        passwordMatch = true;
+                    }
+                }
+            }
+            if (userFound && passwordMatch)
+            {
+               return RedirectToPage("./Home");
+            }
+            return Page();
         }
     }
 }
