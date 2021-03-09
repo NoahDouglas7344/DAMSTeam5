@@ -1,4 +1,7 @@
 using System;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Xunit;
 
 
@@ -8,16 +11,31 @@ namespace CS5800Proj.Testing
 {
     public class UnitTest1
     {
-        [Fact]
-        public void OneEqualsOne()
+
+        [Theory]
+        [InlineData("Noah", "password2")]
+        public void LogOnBadCredentials(string value1, string value2)
         {
-            Assert.True(1==1);
+            var pageModel = new CS5800Proj.Pages.LogInModel();
+            var httpContext = new DefaultHttpContext();
+            
+            //act                
+            var result = pageModel.OnPost(value1,value2);
+
+            Assert.IsType<PageResult>(result);
         }
 
-        [Fact]
-        public void OneIsNotTwo()
+        [Theory]
+        [InlineData("Noah","password1")]
+        public void LogOnGoodCredentials(string value1, string value2)
         {
-            Assert.False(1 == 2);
+            var pageModel = new CS5800Proj.Pages.LogInModel();
+            var httpContext = new DefaultHttpContext();
+
+            //act                
+            var result = pageModel.OnPost(value1, value2);
+
+            Assert.IsType<RedirectToPageResult>(result);
         }
     }
 }

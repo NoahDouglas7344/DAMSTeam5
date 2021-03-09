@@ -10,23 +10,23 @@ namespace CS5800Proj.Pages
 {
     public class LogInModel : PageModel
     {
+        
         [BindProperty (SupportsGet = true)]
         public string userName { get; set; }
         public string passWord { get; set; }
         public string userType { get; set; }
-
+        
         public void OnGet()
         {
          
         }
 
-        public IActionResult OnPost(object Configuration)
+        public IActionResult OnPost(string userName, string passWord)
         {
             if(ModelState.IsValid == false)
             {
                 return Page();
             }
-            //string tempVariable = HttpContext.Request.Form["userName"];
             bool userFound = false;
             bool passwordMatch = false;
 
@@ -39,7 +39,7 @@ namespace CS5800Proj.Pages
                 while (reader.Read())
                 {
                     var value = reader.GetValue(0);
-                    if(value.ToString() == HttpContext.Request.Form["userName"] && reader.GetValue(1) == HttpContext.Request.Form["passWord"])
+                    if(value.ToString() == userName && reader.GetValue(1).ToString() == passWord)
                     {
                         userFound = true;
                         passwordMatch = true;
