@@ -1,0 +1,34 @@
+﻿@page
+@model CS5800Proj.Pages.AccountCreationModel
+@{
+    ViewData["Title"] = "Account Creation";
+}
+<div class="text-center">
+    <h1 class="display-4">Enter Account Details</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="userIDInput" class="form-label">Enter User ID:</label>
+            <input type="text" class="form-control text-center shadow bg-body rounded" id="userIDInput" name="userName" style="max-width:10%; margin-left:45%">
+        </div>
+        <div class="mb-3">
+            <label for="pword">Enter Password:</label>
+            <input type="password" class="form-control text-center shadow bg-body rounded" id="pword" name="passWord" style="max-width:10%; margin-left:45%">
+        </div>
+        <div class="mb-3">
+            <label for="pword2">Enter Password Again:</label>
+            <input type="password" class="form-control text-center shadow bg-body rounded" id="pword2" name="passWord2" style="max-width:10%; margin-left:45%">
+        </div>
+        <div class="mb-3">
+            <label for="pword">Select Account Type:</label>
+            <div class="form-group" style="max-width:10%; margin-left:45%">
+                <select class="form-control" id="accountType" name="userType">
+                    <option>Select...</option>
+                    <option>Donor</option>
+                    <option>Recipient</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-warning shadow bg-body rounded" style="max-width:8%">Create</button>
+    </form>
+    <br />
+</div>
