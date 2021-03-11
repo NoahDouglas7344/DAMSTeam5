@@ -1,0 +1,42 @@
+﻿@page
+@model CS5800Proj.Pages.ModifyModel
+@{
+    ViewData["Title"] = "Admin Modify a Donation Item";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Modify</h1>
+    <form method="post">
+        <div class="mb-3">
+           <label for="donor_location">Select Donation Location:</label>
+           <select id="donor_location" name="donor_locations">
+               <option value="U.S" selected>US</option>
+               <option value="U.K">UK</option>
+               <option value="Canada">Canada</option>
+               <option value="China">China</option>
+               <option value="Germany">Germany</option>
+           </select>
+        </div>
+        <div class="mb-3">
+           <label for="donation_item">Select Donation Catagory:</label>
+           <select id="donation_item" name="donation_items">
+               <option value="Material" selected>Material</option>
+               <option value="Human Resources">Human Resoucres</option>
+               <option value="Money">Money</option>
+               <option value="Food/Drink">Food</option>
+           </select>
+        </div>
+        <div class="mb-3">
+            <label for="amount" class="form-label">Input Amount:</label>
+            <input type="number" class="form-control text-center shadow bg-body rounded" id="amount" name="Amount" style="max-width:10%; margin-left:45%">
+        </div>
+        <div class="mb-3">
+           <label for="donation_request">Select Request:</label>
+           <select id="donation_request" name="donation_items">
+               <option value="TODO" selected>TODO</option>
+           </select>
+        </div>
+        <button type="submit" class="btn btn-outline-warning shadow bg-body rounded" style="max-width:8%">Submit</button>
+    </form>
+    <br />
+</div>
