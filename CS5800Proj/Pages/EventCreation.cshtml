@@ -5,16 +5,17 @@
 }
 
 <div class="text-center">
-    <h1>Welcome</h1>
-    <div>
-        Label 1
-        <input type="text" class="form-control text-center shadow bg-body rounded" id="userIDInput" name="userName" style="max-width:10%; margin-left:45%">
-    </div>
-    <div>
-        Label 2
-        <input type="text" class="form-control text-center shadow bg-body rounded" id="userIDInput" name="userName" style="max-width:10%; margin-left:45%">
+    <h1><b>Please Fill Out the Information Below to Create an Event</b></h1>
+    <form method="post">
+        <label for="recipient">Recipient:</label>
+        <input type="text" id="recipient" name="recipient">
+    
+        <label for="time">When:</label>
+        <input type="text" id="time" name="time">
 
-        Label 3
-        <input type="text" class="form-control text-center shadow bg-body rounded" id="userIDInput" name="userName" style="max-width:10%; margin-left:45%">
-    </div>
+        <label for="location">Where:</label>
+        <input type="text" id="location" name="location">
+
+        <input type="submit" value="Create">
+    </form>
 </div>
