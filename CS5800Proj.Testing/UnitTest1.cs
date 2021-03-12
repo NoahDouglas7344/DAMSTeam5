@@ -71,5 +71,21 @@ namespace CS5800Proj.Testing
             //assert
             Assert.IsType<PageResult>(result);
         }
+        [Theory]
+        [InlineData("", "password1", "password1", "Donor")]
+        [InlineData("test", "", "password1", "Donor")]
+        [InlineData("test", "password1", "", "Donor")]
+        public void AnyFieldsLeftBlank(string user, string passWord1, string passWord2, string userType)
+        {
+            //arrange
+            var pageModel = new CS5800Proj.Pages.AccountCreationModel();
+            var httpContext = new DefaultHttpContext();
+
+            //act                
+            var result = pageModel.OnPost(user, passWord1, passWord2, userType);
+
+            //assert
+            Assert.IsType<PageResult>(result);
+        }
     }
 }
