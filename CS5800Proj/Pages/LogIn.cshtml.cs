@@ -30,7 +30,7 @@ namespace CS5800Proj.Pages
             bool userFound = false;
             bool passwordMatch = false;
 
-            using var connection = new MySqlConnection("server=localhost;port=3306;database=testDB;user=remoteUser;password=dbLogin123");
+            using var connection = new MySqlConnection("server=localhost;port=3306;database=testDB;user=root;password=CS5800Team5");
             {
                 connection.Open();
 
