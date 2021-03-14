@@ -8,13 +8,8 @@
     <h1 class="display-4">Please select an item to delete</h1>
     <form method="post">
         <div class="mb-3">
-           <label for="donation_item">Select Disaster:</label>
-           <select id="donation_item" name="donation_items">
-               <option value="one" selected>One</option>
-               <option value="two">Two</option>
-               <option value="three">Three</option>
-               <option value="four">Four</option>
-           </select>
+           @Html.LabelFor(m => m.del_id)
+           @Html.DropDownListFor(m => m.del_id, new SelectList(Model.names))
         </div>
         <button type="submit" class = "btn btn-outline-warning shadow bg-body rounded" style="max-width:8%">Submit</button>
     </form>
