@@ -15,7 +15,7 @@ namespace CS5800Proj.Pages
         public List<String> names = new List<String>();
         [Display(Name = "Items:")]
 
-        public int del_id { get; set; }
+        public string del_id { get; set; }
         //public string del_items { get; set; }
         
 
@@ -41,9 +41,9 @@ namespace CS5800Proj.Pages
             }
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(string del_id)
         {
-            string id = Request.Form["del_id"];
+            //string id = Request.Form["del_id"];
             if (ModelState.IsValid == false)
             {
                 return Page();
@@ -52,7 +52,7 @@ namespace CS5800Proj.Pages
             {
                 connection.Open();
 
-                using var command = new MySqlCommand("DELETE FROM donationitems where name = '" + id + "'", connection);
+                using var command = new MySqlCommand("DELETE FROM donationitems where name = '" + del_id + "'", connection);
                 var adapter = command.ExecuteNonQuery();
                 if (adapter > 0)
                     return RedirectToPage("./Home");

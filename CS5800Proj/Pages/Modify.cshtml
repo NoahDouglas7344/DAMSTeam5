@@ -8,6 +8,10 @@
     <h1 class="display-4">Modify</h1>
     <form method="post">
         <div class="mb-3">
+           @Html.LabelFor(m => m.mod_id)
+           @Html.DropDownListFor(m => m.mod_id, new SelectList(Model.names))
+        </div>
+        <div class="mb-3">
            <label for="donor_location">Select Donation Location:</label>
            <select id="donor_location" name="donor_locations">
                <option value="U.S" selected>US</option>
@@ -32,7 +36,7 @@
         </div>
         <div class="mb-3">
            <label for="donation_request">Select Request:</label>
-           <select id="donation_request" name="donation_items">
+           <select id="donation_request" name="donation_request">
                <option value="TODO" selected>TODO</option>
            </select>
         </div>
