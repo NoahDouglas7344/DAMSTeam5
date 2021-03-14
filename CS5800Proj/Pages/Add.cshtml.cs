@@ -21,7 +21,7 @@ namespace CS5800Proj.Pages
         }
         public IActionResult OnPost(string name, string donor_locations, string donation_items, int amount,  string donation_request)
         {
-            if (ModelState.IsValid == false)
+            if (ModelState.IsValid == false || amount < 1)
             {
                 return Page();
             }
