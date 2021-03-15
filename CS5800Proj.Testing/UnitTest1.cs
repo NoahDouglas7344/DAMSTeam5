@@ -88,4 +88,109 @@ namespace CS5800Proj.Testing
             Assert.IsType<PageResult>(result);
         }
     }
+    public class AddTests
+    {
+        [Theory]
+        [InlineData("Candy", "U.S", "Money", 10, "TODO")]
+        public void validAdd(string name, string location, string catagory, int amount,  string request)
+        {
+            //arrange
+            var pageModel = new CS5800Proj.Pages.AddModel();
+            var httpContext = new DefaultHttpContext();
+
+            //act                
+            var result = pageModel.OnPost(name, location, catagory, amount, request);
+
+            //assert
+            Assert.IsType<RedirectToPageResult>(result);
+        }
+        [Theory]
+        [InlineData("", "U.S", "Money", 10, "TODO")]
+        [InlineData("Candy", "U.S", "Money", -1, "TODO")]
+        public void AnyFieldsLeftBlank(string name, string location, string catagory, int amount, string request)
+        {
+            //arrange
+            var pageModel = new CS5800Proj.Pages.AddModel();
+            var httpContext = new DefaultHttpContext();
+
+            //act                
+            var result = pageModel.OnPost(name, location, catagory, amount, request);
+
+            //assert
+            Assert.IsType<PageResult>(result);
+        }
+    }
+
+    public class DeleteTests
+    {
+        [Theory]
+        [InlineData("Candy", "U.S", "Money", 10, "TODO")]
+        public void validDelete(string name, string location, string catagory, int amount, string request)
+        {
+            //arrange
+            var pageModel = new CS5800Proj.Pages.AddModel();
+            var httpContext = new DefaultHttpContext();
+
+            //act                
+            var result = pageModel.OnPost(name, location, catagory, amount, request);
+
+            //arrange
+            var pageModel2 = new CS5800Proj.Pages.DeleteModel();
+            var httpContext2 = new DefaultHttpContext();
+
+            //act                
+            var result2 = pageModel2.OnPost(name);
+
+            //assert
+            Assert.IsType<RedirectToPageResult>(result2);
+        }
+    }
+
+    public class ModifyTests
+    {
+        [Theory]
+        [InlineData("Candy", "U.S", "Money", 10, "TODO")]
+        public void validModify(string name, string location, string catagory, int amount, string request)
+        {
+            //arrange
+            var pageModel = new CS5800Proj.Pages.AddModel();
+            var httpContext = new DefaultHttpContext();
+
+            //act                
+            var result = pageModel.OnPost(name, location, catagory, amount, request);
+
+            //arrange
+            var pageModel2 = new CS5800Proj.Pages.ModifyModel();
+            var httpContext2 = new DefaultHttpContext();
+
+            //act                
+            var result2 = pageModel2.OnPost(name, location, catagory, amount, request);
+
+            //assert
+            Assert.IsType<RedirectToPageResult>(result2);
+        }
+
+        [Theory]
+        [InlineData("Candy", "U.S", "Money", -1, "TODO")]
+        public void negitiveModify(string name, string location, string catagory, int amount, string request)
+        {
+            //arrange
+            var pageModel = new CS5800Proj.Pages.AddModel();
+            var httpContext = new DefaultHttpContext();
+
+            //act                
+            var result = pageModel.OnPost(name, location, catagory, amount, request);
+
+            //arrange
+            var pageModel2 = new CS5800Proj.Pages.ModifyModel();
+            var httpContext2 = new DefaultHttpContext();
+
+            //act                
+            var result2 = pageModel2.OnPost(name, location, catagory, amount, request);
+
+            //assert
+            Assert.IsType<PageResult>(result2);
+        }
+    }
+
 }
