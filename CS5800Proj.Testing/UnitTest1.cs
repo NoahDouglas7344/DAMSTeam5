@@ -88,6 +88,7 @@ namespace CS5800Proj.Testing
             Assert.IsType<PageResult>(result);
         }
     }
+
     public class AddTests
     {
         [Theory]
@@ -193,4 +194,55 @@ namespace CS5800Proj.Testing
         }
     }
 
+    // Austin Wittenburg Unit Tests
+    public class EventCreationTests
+	{
+        [Theory]
+        [InlineData("", "", "")]
+        public void BadInputs3(string recipient, string time, string location)
+        {
+
+            var pageModel = new CS5800Proj.Pages.EventCreationModel();
+            var httpContext = new DefaultHttpContext();
+            var result = pageModel.OnPost(recipient, time, location);
+
+            Assert.IsType<PageResult>(result);
+        }
+
+        [Theory]
+        [InlineData("Good Name", "", "")]
+        public void BadInputs2(string recipient, string time, string location)
+        {
+
+            var pageModel = new CS5800Proj.Pages.EventCreationModel();
+            var httpContext = new DefaultHttpContext();
+            var result = pageModel.OnPost(recipient, time, location);
+
+            Assert.IsType<PageResult>(result);
+        }
+
+        [Theory]
+        [InlineData("Good Name", "Good Date", "")]
+        public void BadInputs1(string recipient, string time, string location)
+        {
+
+            var pageModel = new CS5800Proj.Pages.EventCreationModel();
+            var httpContext = new DefaultHttpContext();              
+            var result = pageModel.OnPost(recipient, time, location);
+
+            Assert.IsType<PageResult>(result);
+        }
+
+        [Theory]
+        [InlineData("Name", "3/15/2021", "Location")]
+        public void GoodInputs(string recipient, string time, string location)
+        {
+
+            var pageModel = new CS5800Proj.Pages.EventCreationModel();
+            var httpContext = new DefaultHttpContext();
+            var result = pageModel.OnPost(recipient, time, location);
+
+            Assert.IsType<RedirectToPageResult>(result);
+        }
+    }
 }

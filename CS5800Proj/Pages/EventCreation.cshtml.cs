@@ -10,15 +10,17 @@ namespace CS5800Proj.Pages
 {
 	public class EventCreationModel : PageModel
 	{
+		[BindProperty(SupportsGet = true)]
+		public string recipient { get; set; }
+		public string time { get; set; }
+		public string location { get; set; }
+
 		public void OnGet()
 		{
 		}
 
-		public IActionResult OnPost()
+		public IActionResult OnPost(string recipient, string time, string location)
 		{
-			var recipient = Request.Form["recipient"];
-			var time = Request.Form["time"];
-			var location = Request.Form["location"];
 
 			if (recipient == "" || time == "" || location == "")
 			{
