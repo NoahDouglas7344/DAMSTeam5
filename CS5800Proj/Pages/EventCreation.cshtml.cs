@@ -22,7 +22,7 @@ namespace CS5800Proj.Pages
 
 			if (recipient == "" || time == "" || location == "")
 			{
-				return Page();
+				return Page(); //Reloads the page is there was an empty field
 			}
 
 			using var connection = new MySqlConnection("server=localhost;port=3306;database=testDB;user=root;password=CS5800Team5");
@@ -32,9 +32,9 @@ namespace CS5800Proj.Pages
 				using var command = new MySqlCommand("INSERT INTO testEvents(recipient, time, location) values('"+recipient+"', '"+time+"', '"+location+"')", connection);
 				var adapter = command.ExecuteNonQuery();
 				if (adapter > 0)
-					return RedirectToPage("./Home");
+					return RedirectToPage("./EventConfirmation"); //Used to check if table insertion was sucessful
 			}
-			return Page();
+			return Page(); //Reloads the page if there was an issue inserting the values to the table
 		}
 	}
 }
