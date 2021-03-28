@@ -245,4 +245,36 @@ namespace CS5800Proj.Testing
             Assert.IsType<RedirectToPageResult>(result);
         }
     }
+    public class PledgeTests
+    {
+        [Theory]
+        [InlineData("Candy", "U.S", "Money", 10)]
+        public void validPledge(string name, string location, string catagory, int amount)
+        {
+            //arrange
+            var pageModel = new CS5800Proj.Pages.PledgeModel();
+            var httpContext = new DefaultHttpContext();
+
+            //act                
+            var result = pageModel.OnPost(name, location, catagory, amount);
+
+            //assert
+            Assert.IsType<RedirectToPageResult>(result);
+        }
+        [Theory]
+        [InlineData("", "U.S", "Money", 10)]
+        [InlineData("Candy", "U.S", "Money", -1)]
+        public void AnyFieldsLeftBlank(string name, string location, string catagory, int amount)
+        {
+            //arrange
+            var pageModel = new CS5800Proj.Pages.PledgeModel();
+            var httpContext = new DefaultHttpContext();
+
+            //act                
+            var result = pageModel.OnPost(name, location, catagory, amount);
+
+            //assert
+            Assert.IsType<PageResult>(result);
+        }
+    }
 }
