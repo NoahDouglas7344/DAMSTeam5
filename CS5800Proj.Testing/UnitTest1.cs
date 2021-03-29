@@ -245,6 +245,58 @@ namespace CS5800Proj.Testing
             Assert.IsType<RedirectToPageResult>(result);
         }
     }
+
+    public class ResponseTests
+	{
+        [Theory]
+        [InlineData("", "", 0)]
+        public void BadInputs3(string recipient, string type, int amount)
+        {
+
+            var pageModel = new CS5800Proj.Pages.ResponseModel();
+            var httpContext = new DefaultHttpContext();
+            var result = pageModel.OnPost(recipient, type, amount);
+
+            Assert.IsType<RedirectToPageResult>(result);
+        }
+
+        [Theory]
+        [InlineData("", "", 100)]
+        public void BadInputs2(string recipient, string type, int amount)
+        {
+
+            var pageModel = new CS5800Proj.Pages.ResponseModel();
+            var httpContext = new DefaultHttpContext();
+            var result = pageModel.OnPost(recipient, type, amount);
+
+            Assert.IsType<RedirectToPageResult>(result);
+        }
+
+        [Theory]
+        [InlineData("", "material", 100)]
+        public void BadInputs1(string recipient, string type, int amount)
+        {
+
+            var pageModel = new CS5800Proj.Pages.ResponseModel();
+            var httpContext = new DefaultHttpContext();
+            var result = pageModel.OnPost(recipient, type, amount);
+
+            Assert.IsType<RedirectToPageResult>(result);
+        }
+
+        [Theory]
+        [InlineData("testName2", "money", 100)]
+        public void GoodInputs(string recipient, string type, int amount)
+        {
+
+            var pageModel = new CS5800Proj.Pages.ResponseModel();
+            var httpContext = new DefaultHttpContext();
+            var result = pageModel.OnPost(recipient, type, amount);
+
+            Assert.IsType<RedirectToPageResult>(result);
+        }
+    }
+
     public class PledgeTests
     {
         [Theory]
