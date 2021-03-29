@@ -7,18 +7,30 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Please Select a Disaster That Tou Need Relief From @Model.disaster</h1>
+    <h1 class="display-4"> Donation Item Request</h1>
     <form method="post">
         <div class="mb-3">
-           <label for="disaster">Select Disaster:</label>
-           <select id="disaster" name="disasters">
-               <option value="one" selected>One</option>
-               <option value="two">Two</option>
-               <option value="three">Three</option>
-               <option value="four">Four</option>
-           </select>
+            <label for="location" class="form-label">Enter Disaster Location:</label>
+            <input type="text" class="form-control text-center shadow bg-body rounded" id="location" name="location" style="max-width:10%; margin-left:45%">
         </div>
-        <button type="submit" class = "btn btn-outline-warning shadow bg-body rounded" style="max-width:8%">Submit</button>
+        <div class="mb-3">
+            <label for="date" class="form-label">Enter Disaster Date:</label>
+            <input type="text" class="form-control text-center shadow bg-body rounded" id="date" name="date" style="max-width:10%; margin-left:45%">
+        </div>
+        <div class="mb-3">
+            <label for="type">Select Request Item Type:</label>
+            <select id="type" name="type">
+                <option value="Material" selected>Material</option>
+                <option value="Resources">Resources</option>
+                <option value="Money">Money</option>
+                <option value="Food">Food</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="amount">Enter Request Amount:</label>
+            <input type="text" class="form-control text-center shadow bg-body rounded" id="amount" name="amount" style="max-width:10%; margin-left:45%">
+        </div>
+        <button type="submit" class="btn btn-outline-warning shadow bg-body rounded" style="max-width:8%">Submit</button>
     </form>
 </div>
 
