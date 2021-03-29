@@ -1,0 +1,32 @@
+﻿@page
+@model CS5800Proj.Pages.ResponseModel
+@{
+    ViewData["Title"] = "Response";
+}
+
+<div class="text-center">
+    <h1><b>Respond to an Event</b></h1>
+    <form method="post">
+        <div>
+            <label for="recipient">Recipient:</label>
+            <input type="text" id="recipient" name="recipient">
+        </div>
+
+        <div>
+            <label for="type">Type:</label>
+            <select id="type" name="type">
+                <option value="material" selected>Material</option>
+                <option value="resources">Human Resoucres</option>
+                <option value="money">Money</option>
+                <option value="food">Food</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" name="amount">
+        </div>
+
+        <input type="submit" value="Donate">
+    </form>
+</div>
