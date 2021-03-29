@@ -8,21 +8,25 @@ using MySql.Data.MySqlClient;
 
 namespace CS5800Proj.Pages
 {
-	public class ResponseModel : PageModel
-	{
+    public class ResponseFailModel : PageModel
+    {
 
-        [BindProperty (SupportsGet = true)]
+        [BindProperty(SupportsGet = true)]
         public string recipient { get; set; }
         public string type { get; set; }
         public string amount { get; set; }
 
         public void OnGet()
-		{
+        {
 
-		}
+        }
 
         public IActionResult OnPost(string recipient, string type, int amount)
         {
+            if (ModelState.IsValid == false)
+            {
+                return Page();
+            }
             bool recipientFound = false;
 
             using var connection = new MySqlConnection("server=localhost;port=3306;database=testDB;user=root;password=CS5800Team5");
@@ -51,7 +55,7 @@ namespace CS5800Proj.Pages
                 update.ExecuteNonQuery();
                 return RedirectToPage("./Home");
             }
-            return RedirectToPage("./ResponseFail");
+            return Page();
         }
     }
 }
