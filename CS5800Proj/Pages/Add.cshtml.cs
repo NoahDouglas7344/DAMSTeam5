@@ -11,15 +11,14 @@ namespace CS5800Proj.Pages
     public class AddModel : PageModel
     {
         [BindProperty(SupportsGet = true)]
-        public string name { get; set; }
-        public string donor_locations { get; set; }
+        public string donor_location { get; set; }
         public string donation_items { get; set; }
         public int amount { get; set; }
         public string donation_request { get; set; }
         public void OnGet()
         {
         }
-        public IActionResult OnPost(string name, string donor_locations, string donation_items, int amount,  string donation_request)
+        public IActionResult OnPost(string donor_location, string donation_items, int amount,  string donation_request)
         {
             if (ModelState.IsValid == false || amount < 1)
             {
@@ -29,7 +28,7 @@ namespace CS5800Proj.Pages
                 {
                     connection.Open();
 
-                    using var command = new MySqlCommand("INSERT INTO donationitems(donorLocation, donationCat, donationAmount, donationRequest, name) values('" + donor_locations + "', '" + donation_items + "', '" + amount + "', '" + donation_request + "', '" + name + "')", connection);
+                    using var command = new MySqlCommand("INSERT INTO donationitems(donorLocation, donationCat, donationAmount, donationRequest) values('" + donor_location + "', '" + donation_items + "', '" + amount + "', '" + donation_request + "')", connection);
                     var adapter = command.ExecuteNonQuery();
                     if (adapter > 0)
                         return RedirectToPage("./Home");

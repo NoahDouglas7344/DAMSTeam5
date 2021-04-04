@@ -11,24 +11,25 @@ namespace CS5800Proj.Pages
     public class PledgeModel : PageModel
     {
         [BindProperty(SupportsGet = true)]
-        public string name { get; set; }
-        public string donor_locations { get; set; }
+        public string donor_location { get; set; }
         public string donation_items { get; set; }
         public int amount { get; set; }
         public void OnGet()
         {
         }
-        public IActionResult OnPost(string name, string donor_locations, string donation_items, int amount)
+        public IActionResult OnPost(string donor_location, string donation_items, int amount)
         {
             if (ModelState.IsValid == false || amount < 1)
             {
                 return Page();
             }
+
+            string pledge = "Pledge";
             using var connection = new MySqlConnection("server=localhost;port=3306;database=testDB;user=root;password=CS5800Team5");
             {
                 connection.Open();
 
-                using var command = new MySqlCommand("INSERT INTO donationitems(donorLocation, donationCat, donationAmount, donationRequest, name) values('" + donor_locations + "', '" + donation_items + "', '" + amount + "', '" + "Pledge" + "', '" + name + "')", connection);
+                using var command = new MySqlCommand("INSERT INTO donationitems(donorLocation, donationCat, donationAmount, donationRequest) values('" + donor_location + "', '" + donation_items + "', '" + amount + "', '" + pledge + "')", connection);
                 var adapter = command.ExecuteNonQuery();
                 if (adapter > 0)
                     return RedirectToPage("./Home");

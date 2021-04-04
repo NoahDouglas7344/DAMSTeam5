@@ -92,30 +92,30 @@ namespace CS5800Proj.Testing
     public class AddTests
     {
         [Theory]
-        [InlineData("Candy", "U.S", "Money", 10, "TODO")]
-        public void validAdd(string name, string location, string catagory, int amount,  string request)
+        [InlineData("U.S", "Money", 10, "TODO")]
+        public void validAdd(string location, string catagory, int amount,  string request)
         {
             //arrange
             var pageModel = new CS5800Proj.Pages.AddModel();
             var httpContext = new DefaultHttpContext();
 
             //act                
-            var result = pageModel.OnPost(name, location, catagory, amount, request);
+            var result = pageModel.OnPost(location, catagory, amount, request);
 
             //assert
             Assert.IsType<RedirectToPageResult>(result);
         }
         [Theory]
-        [InlineData("", "U.S", "Money", 10, "TODO")]
-        [InlineData("Candy", "U.S", "Money", -1, "TODO")]
-        public void AnyFieldsLeftBlank(string name, string location, string catagory, int amount, string request)
+        [InlineData("U.S", "Money", 10, "TODO")]
+        [InlineData("U.S", "", -1, "TODO")]
+        public void AnyFieldsLeftBlank(string location, string catagory, int amount, string request)
         {
             //arrange
             var pageModel = new CS5800Proj.Pages.AddModel();
             var httpContext = new DefaultHttpContext();
 
             //act                
-            var result = pageModel.OnPost(name, location, catagory, amount, request);
+            var result = pageModel.OnPost(location, catagory, amount, request);
 
             //assert
             Assert.IsType<PageResult>(result);
@@ -125,22 +125,22 @@ namespace CS5800Proj.Testing
     public class DeleteTests
     {
         [Theory]
-        [InlineData("Candy", "U.S", "Money", 10, "TODO")]
-        public void validDelete(string name, string location, string catagory, int amount, string request)
+        [InlineData("U.S", "Money", 10, "TODO")]
+        public void validDelete(string location, string catagory, int amount, string request)
         {
             //arrange
             var pageModel = new CS5800Proj.Pages.AddModel();
             var httpContext = new DefaultHttpContext();
 
             //act                
-            var result = pageModel.OnPost(name, location, catagory, amount, request);
+            var result = pageModel.OnPost(location, catagory, amount, request);
 
             //arrange
             var pageModel2 = new CS5800Proj.Pages.DeleteModel();
             var httpContext2 = new DefaultHttpContext();
 
             //act                
-            var result2 = pageModel2.OnPost(name);
+            var result2 = pageModel2.OnPost(catagory+'('+amount+')'+'-'+location);
 
             //assert
             Assert.IsType<RedirectToPageResult>(result2);
@@ -150,44 +150,44 @@ namespace CS5800Proj.Testing
     public class ModifyTests
     {
         [Theory]
-        [InlineData("Candy", "U.S", "Money", 10, "TODO")]
-        public void validModify(string name, string location, string catagory, int amount, string request)
+        [InlineData("Money(10)-U.S","U.S", "Money", 10, "TODO")]
+        public void validModify(string mod_id, string location, string catagory, int amount, string request)
         {
             //arrange
             var pageModel = new CS5800Proj.Pages.AddModel();
             var httpContext = new DefaultHttpContext();
 
             //act                
-            var result = pageModel.OnPost(name, location, catagory, amount, request);
+            var result = pageModel.OnPost(location, catagory, amount, request);
 
             //arrange
             var pageModel2 = new CS5800Proj.Pages.ModifyModel();
             var httpContext2 = new DefaultHttpContext();
 
             //act                
-            var result2 = pageModel2.OnPost(name, location, catagory, amount, request);
+            var result2 = pageModel2.OnPost(mod_id, location, catagory, amount, request);
 
             //assert
             Assert.IsType<RedirectToPageResult>(result2);
         }
 
         [Theory]
-        [InlineData("Candy", "U.S", "Money", -1, "TODO")]
-        public void negitiveModify(string name, string location, string catagory, int amount, string request)
+        [InlineData("Money(-1)-U.S", "U.S", "Money", -1, "TODO")]
+        public void negitiveModify(string mod_id, string location, string catagory, int amount, string request)
         {
             //arrange
             var pageModel = new CS5800Proj.Pages.AddModel();
             var httpContext = new DefaultHttpContext();
 
             //act                
-            var result = pageModel.OnPost(name, location, catagory, amount, request);
+            var result = pageModel.OnPost(location, catagory, amount, request);
 
             //arrange
             var pageModel2 = new CS5800Proj.Pages.ModifyModel();
             var httpContext2 = new DefaultHttpContext();
 
             //act                
-            var result2 = pageModel2.OnPost(name, location, catagory, amount, request);
+            var result2 = pageModel2.OnPost(mod_id, location, catagory, amount, request);
 
             //assert
             Assert.IsType<PageResult>(result2);
@@ -248,30 +248,30 @@ namespace CS5800Proj.Testing
     public class PledgeTests
     {
         [Theory]
-        [InlineData("Candy", "U.S", "Money", 10)]
-        public void validPledge(string name, string location, string catagory, int amount)
+        [InlineData("U.S", "Money", 10)]
+        public void validPledge(string location, string catagory, int amount)
         {
             //arrange
             var pageModel = new CS5800Proj.Pages.PledgeModel();
             var httpContext = new DefaultHttpContext();
 
             //act                
-            var result = pageModel.OnPost(name, location, catagory, amount);
+            var result = pageModel.OnPost(location, catagory, amount);
 
             //assert
             Assert.IsType<RedirectToPageResult>(result);
         }
         [Theory]
-        [InlineData("", "U.S", "Money", 10)]
-        [InlineData("Candy", "U.S", "Money", -1)]
-        public void AnyFieldsLeftBlank(string name, string location, string catagory, int amount)
+        [InlineData("U.S", "Money", 10)]
+        [InlineData("U.S", "", -1)]
+        public void AnyFieldsLeftBlank(string location, string catagory, int amount)
         {
             //arrange
             var pageModel = new CS5800Proj.Pages.PledgeModel();
             var httpContext = new DefaultHttpContext();
 
             //act                
-            var result = pageModel.OnPost(name, location, catagory, amount);
+            var result = pageModel.OnPost(location, catagory, amount);
 
             //assert
             Assert.IsType<PageResult>(result);
