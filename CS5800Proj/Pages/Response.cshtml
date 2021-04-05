@@ -7,11 +7,16 @@
 <div class="text-center">
     <h1><b>Respond to an Event</b></h1>
     <form method="post">
+        <div class="mb-3">
+            @Html.LabelFor(m => m.recipient)
+            @Html.DropDownListFor(m => m.recipient, new SelectList(Model.requests))
+        </div>
+        <!--
         <div>
             <label for="recipient">Recipient:</label>
             <input type="text" id="recipient" name="recipient">
         </div>
-
+        -->
         <div>
             <label for="type">Type:</label>
             <select id="type" name="type">
