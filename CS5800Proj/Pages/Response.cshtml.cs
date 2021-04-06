@@ -25,13 +25,13 @@ namespace CS5800Proj.Pages
             {
                 connection.Open();
 
-                using var recipients = new MySqlCommand("SELECT Recipient FROM Requests", connection);
+                using var recipients = new MySqlCommand("SELECT Disaster FROM Requests", connection);
                 {
                     using (MySqlDataReader recipientreader = recipients.ExecuteReader())
                     {
                         while (recipientreader.Read())
                         {
-                            requests.Add(recipientreader["Recipient"].ToString());
+                            requests.Add(recipientreader["Disaster"].ToString());
                         }
                     }
                 }
