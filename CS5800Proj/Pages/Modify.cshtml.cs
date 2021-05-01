@@ -14,6 +14,8 @@ namespace CS5800Proj.Pages
     public class ModifyModel : PageModel
     {
         public List<String> names = new List<String>();
+        public List<String> IDs = new List<String>();
+        int id;
         [Display(Name = "Items to Modify:")]
         [BindProperty(SupportsGet = true)]
         public string mod_id { get; set; }
@@ -37,6 +39,17 @@ namespace CS5800Proj.Pages
                         }
                     }
                 }
+
+                using var command2 = new MySqlCommand("SELECT * FROM requests", connection);
+                {
+                    using (MySqlDataReader sdr = command2.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            IDs.Add(sdr["DisasterLocation"].ToString() + '(' + sdr["DisasterDate"].ToString() + ')');
+                        }
+                    }
+                }
             }
         }
 
@@ -53,12 +66,29 @@ namespace CS5800Proj.Pages
             GroupCollection groups = matches[0].Groups;
 
 
+            string Disastermatch = "(.+)\\((.+)\\)";
+
+            MatchCollection Disastermatches = Regex.Matches(donation_request, Disastermatch);
+            GroupCollection Disastergroups = Disastermatches[0].Groups;
+
+
 
             using var connection = new MySqlConnection("server=localhost;port=3306;database=testDB;user=root;password=CS5800Team5");
             {
                 connection.Open();
 
-                using var command = new MySqlCommand("UPDATE donationitems SET donorLocation = '" + donor_location + "', donationCat = '" + donation_items + "', donationAmount = " + amount + ", donationRequest = '" + donation_request + "' WHERE donationCat = '" + groups[1] + "'" + " AND donationAmount = " + groups[2] + " AND donorLocation = '" + groups[3] + "'", connection);
+                using var qcommand = new MySqlCommand("select id FROM requests WHERE DisasterLocation = '" + Disastergroups[1] + "' AND DisasterDate = '" + Disastergroups[2] + "'", connection);
+                {
+                    using (MySqlDataReader sdr = qcommand.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            id = Convert.ToInt32(sdr["id"]);
+                        }
+                    }
+                }
+
+                using var command = new MySqlCommand("UPDATE donationitems SET donorLocation = '" + donor_location + "', donationCat = '" + donation_items + "', donationAmount = " + amount + ", donationRequest = " + id + " WHERE donationCat = '" + groups[1] + "'" + " AND donationAmount = " + groups[2] + " AND donorLocation = '" + groups[3] + "'", connection);
                 var adapter = command.ExecuteNonQuery();
                 if (adapter > 0)
                     return RedirectToPage("./Home");

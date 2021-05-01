@@ -55,8 +55,8 @@ namespace CS5800Proj.Pages
                 {
                     connection.Open();
 
-                    using var command = new MySqlCommand("INSERT INTO Requests(Disaster, RequestType, RequestQuantity)" +
-                        " VALUES('"+groups[1]+"' , '" + type + "', '" + amount + "')", connection);
+                    using var command = new MySqlCommand("INSERT INTO Requests(DisasterLocation, DisasterDate, RequestType, RequestQuantity)" +
+                        " VALUES('"+groups[2]+"', '" + groups[3]+ "', '" + type + "', '" + amount + "')", connection);
                     var adapter = command.ExecuteNonQuery();
                     if (adapter > 0)
                         return RedirectToPage("./Home");

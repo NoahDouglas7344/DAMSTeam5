@@ -29,7 +29,7 @@ namespace CS5800Proj.Pages
             {
                 connection.Open();
 
-                using var command = new MySqlCommand("INSERT INTO donationitems(donorLocation, donationCat, donationAmount, donationRequest) values('" + donor_location + "', '" + donation_items + "', '" + amount + "', '" + pledge + "')", connection);
+                using var command = new MySqlCommand("INSERT INTO donationitems(donorLocation, donationCat, donationAmount) values('" + donor_location + "', '" + donation_items + "', '" + amount + "')", connection);
                 var adapter = command.ExecuteNonQuery();
                 if (adapter > 0)
                     return RedirectToPage("./Home");
