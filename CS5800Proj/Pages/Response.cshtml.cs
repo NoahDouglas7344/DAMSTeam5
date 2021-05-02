@@ -15,6 +15,7 @@ namespace CS5800Proj.Pages
     {
         public List<String> requests = new List<String>();
         int id;
+        String curr_user = "user";
         [Display(Name = "Responses:")]
         [BindProperty(SupportsGet = true)]
         public string recipient { get; set; }
@@ -76,6 +77,11 @@ namespace CS5800Proj.Pages
                                 id = Convert.ToInt32(sdr["ID"]);
                             }
                         }
+                    }
+
+                   using var Addcommand = new MySqlCommand("INSERT INTO donationitems(donorLocation, donationCat, donationAmount, donationRequest, user) values('" + "direct" + "', '" + type + "', '" + amount + "', " + id + ", '" + curr_user + "')", connection);
+                    {
+                        Addcommand.ExecuteNonQuery();
                     }
 
 

@@ -1,4 +1,17 @@
 ﻿@page
 @model CS5800Proj.Pages.HistoryModel
 @{
+    ViewData["Title"] = "View History";
 }
+
+
+<div class="text-center">
+    <h1 class="display-4">Donation History</h1>
+       
+        <div class="mb-3">
+           <label for="history" class="form-label">Donation History:</label>
+           @Html.ListBoxFor(m => m.donations, new SelectList(Model.donations))
+        </div>
+
+    <br />
+</div>

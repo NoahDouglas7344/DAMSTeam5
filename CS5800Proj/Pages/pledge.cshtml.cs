@@ -10,6 +10,8 @@ namespace CS5800Proj.Pages
 {
     public class PledgeModel : PageModel
     {
+
+        String curr_user = "user";
         [BindProperty(SupportsGet = true)]
         public string donor_location { get; set; }
         public string donation_items { get; set; }
@@ -29,7 +31,7 @@ namespace CS5800Proj.Pages
             {
                 connection.Open();
 
-                using var command = new MySqlCommand("INSERT INTO donationitems(donorLocation, donationCat, donationAmount) values('" + donor_location + "', '" + donation_items + "', '" + amount + "')", connection);
+                using var command = new MySqlCommand("INSERT INTO donationitems(donorLocation, donationCat, donationAmount, user) values('" + donor_location + "', '" + donation_items + "', '" + amount + "', '" + curr_user +"')", connection);
                 var adapter = command.ExecuteNonQuery();
                 if (adapter > 0)
                     return RedirectToPage("./Home");
