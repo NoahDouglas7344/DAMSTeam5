@@ -1,0 +1,22 @@
+﻿@page
+@model CS5800Proj.Pages.StatusUpdateModel
+@{
+}
+<div class="text-center">
+    <h1 class="display-4"> Update Donation Status</h1>
+    <form method="post">
+        <div class="mb-3">
+            @Html.LabelFor(m => m.mod_id)
+            @Html.DropDownListFor(m => m.mod_id, new SelectList(Model.names))
+        </div>
+        <div class="mb-3">
+            <label for="type">Select Donation Status:</label>
+            <select id="type" name="type">
+                <option value="Preparing" selected>Preparing</option>
+                <option value="Out For Delivery">Out For Delivery</option>
+                <option value="Delivered">Delivered</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-outline-warning shadow bg-body rounded" style="max-width:8%">Update</button>
+    </form>
+</div>
