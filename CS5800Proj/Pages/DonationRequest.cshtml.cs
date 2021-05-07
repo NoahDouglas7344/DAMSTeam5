@@ -40,6 +40,8 @@ namespace CS5800Proj.Pages
                 }
             }
         }
+
+
         public IActionResult OnPost(string location, string date, string type, string amount)
         {
             if (ModelState.IsValid == false)
