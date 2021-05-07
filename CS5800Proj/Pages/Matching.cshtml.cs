@@ -145,7 +145,7 @@ namespace CS5800Proj.Pages
                 var adapter = updateRecipientCommand.ExecuteNonQuery();
                 adapter = updateDonorCommand.ExecuteNonQuery();
                 if (adapter > 0)
-                    return RedirectToPage("./Home");
+                    return RedirectToPage("./Shipping");
             }
 
 
